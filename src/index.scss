@@ -1,12 +1,43 @@
-:root {
+root {
   font: 16px / 1 sans-serif;
 }
-
 html {
   height: 100%;
 }
-
 body {
   margin: 0;
-  min-height: 100%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(231, 210, 182);
+}
+h1 {
+  text-align: center;
+  margin-top: 10rem;
+}
+* {
+  list-style: none;
+}
+.row {
+  display: flex;
+}
+.cell {
+  width: 2rem;
+  height: 2rem;
+  border: thick solid;
+  border-color: black;
+  background-color: rgb(203, 119, 241);
+}
+.cell:hover {
+  background-color: rgb(119, 117, 238);
+}
+.revealed {
+  border-color: whitesmoke;
+  color: black;
+  background-color: rgb(228, 134, 162);
+}
+.unrevealed {
+  background-color: rgb(203, 119, 241);
 }
