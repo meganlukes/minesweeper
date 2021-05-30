@@ -16,17 +16,23 @@ export class App extends Component {
     state: 'new',
     mines: 10,
   }
+
+  //New Game
   handleNewGame = async () => {
-    const response = await fetch('https://minesweeper-api.herokuapp.com/game', {
-      method: 'POST',
-    })
-    if (response.status === 201) {
+    const response = await fetch(
+      'https://minesweeper-api.herokuapp.com/games',
+      {
+        method: 'POST',
+      }
+    )
+    if (response.status === 200) {
       const game = await response.json()
       console.log(game)
       this.setState(game)
     }
   }
-  //right click is ontextmenu
+
+  //Check cell
   handleCellClick = async (row, col) => {
     const body = { row: row, col: col }
     const response = await fetch(
@@ -43,10 +49,27 @@ export class App extends Component {
     }
   }
 
+  //Flag cell
+  handleFlagCell = async (row, col) => {
+    const body = { row: row, col: col }
+    const response = await fetch(
+      `https://minesweeper-api.herokuapp.com/games/${this.state.id}/flag`,
+      {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(body),
+      }
+    )
+    if (response.status === 200) {
+      const game = await response.json()
+      this.setState(game)
+    }
+  }
+
   render() {
     return (
       <>
-        <h1>Barefoot Lego Detector</h1>
+        <h1>Minesweeper</h1>
         <button onClick={() => this.handleNewGame}>New Game</button>
         <div>
           {this.state.board.map((row, rowIndex) => {
@@ -60,7 +83,9 @@ export class App extends Component {
                       onClick={() =>
                         this.handleCellClick(rowIndex, columnIndex)
                       }
-                    ></div>
+                    >
+                      {cell}
+                    </div>
                   )
                 })}
               </div>
@@ -71,3 +96,5 @@ export class App extends Component {
     )
   }
 }
+
+//right click is ontextmenu
