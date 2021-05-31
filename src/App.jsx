@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Gameboard from './components/Gameboard'
 
 export class App extends Component {
   state = {
@@ -23,6 +24,7 @@ export class App extends Component {
       'https://minesweeper-api.herokuapp.com/games',
       {
         method: 'POST',
+        headers: { 'content-type': 'application/json' },
       }
     )
     if (response.status === 200) {
@@ -69,32 +71,18 @@ export class App extends Component {
   render() {
     return (
       <>
-        <h1>Minesweeper</h1>
-        <button onClick={() => this.handleNewGame}>New Game</button>
-        <div>
-          {this.state.board.map((row, rowIndex) => {
-            return (
-              <div className="row">
-                {row.map((cell, columnIndex) => {
-                  return (
-                    <div
-                      className="cell"
-                      // @ts-ignore
-                      onClick={() =>
-                        this.handleCellClick(rowIndex, columnIndex)
-                      }
-                    >
-                      {cell}
-                    </div>
-                  )
-                })}
-              </div>
-            )
-          })}
-        </div>
+        <h1>Lego-Sweeper</h1>
+
+        <button onClick={this.handleNewGame}>New Game</button>
+        <Gameboard
+          brick={this.state.board}
+          funClick={this.handleCellClick}
+          Clickish={this.handleFlagCell}
+        />
       </>
     )
   }
 }
 
 //right click is ontextmenu
+//<h2>Sweep up the bricks before you step on one!</h2>

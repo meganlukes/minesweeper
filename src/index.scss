@@ -17,6 +17,9 @@ h1 {
   text-align: center;
   margin-top: 10rem;
 }
+h2 {
+  text-align: center;
+}
 * {
   list-style: none;
 }
@@ -28,16 +31,20 @@ h1 {
   height: 2rem;
   border: thick solid;
   border-color: black;
-  //background-color: rgb(203, 119, 241);
+  background-color: rgb(203, 119, 241);
+  font-size: 24px;
 }
 .cell:hover {
   background-color: rgb(119, 117, 238);
 }
-.revealed {
+div li.revealed {
   border-color: whitesmoke;
   color: black;
   background-color: rgb(228, 134, 162);
 }
 .unrevealed {
-  //background-color: rgb(203, 119, 241);
+  background-color: rgb(203, 119, 241);
+}
+.bomb {
+  background-color: red;
 }
