@@ -32,12 +32,11 @@ class Gameboard extends Component {
               {row.map((cell, columnIndex) => {
                 return (
                   <li
-                    className="cell"
+                    className={`cell ${this.getClassName(cell)}`}
                     key={columnIndex}
-                    // @ts-ignore
                     onClick={() => this.props.funClick(rowIndex, columnIndex)}
-                    onContextMenu={() =>
-                      this.props.Clickish(rowIndex, columnIndex)
+                    onContextMenu={event =>
+                      this.props.Clickish(rowIndex, columnIndex, event)
                     }
                   >
                     {cell}
@@ -51,5 +50,4 @@ class Gameboard extends Component {
     )
   }
 }
-
 export default Gameboard

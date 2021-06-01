@@ -39,12 +39,23 @@ h2 {
 }
 div li.revealed {
   border-color: whitesmoke;
-  color: black;
+  color: transparent;
   background-color: rgb(228, 134, 162);
 }
 .unrevealed {
   background-color: rgb(203, 119, 241);
 }
-.bomb {
+div li.bomb {
   background-color: red;
+  color: transparent;
 }
+div li.flagged {
+  background-image: 'Images/lego basket.jpg';
+  background-color: rgb(173, 173, 250);
+  color: transparent;
+}
+// .row .cell .revealed {
+//   border-color: whitesmoke;
+//   color: black;
+//   background-color: rgb(228, 134, 162);
+// }

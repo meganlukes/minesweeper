@@ -52,7 +52,8 @@ export class App extends Component {
   }
 
   //Flag cell
-  handleFlagCell = async (row, col) => {
+  handleFlagCell = async (row, col, event) => {
+    event.preventDefault()
     const body = { row: row, col: col }
     const response = await fetch(
       `https://minesweeper-api.herokuapp.com/games/${this.state.id}/flag`,
@@ -72,7 +73,8 @@ export class App extends Component {
     return (
       <>
         <h1>Lego-Sweeper</h1>
-
+        <h2>{this.state.state}</h2>
+        <h2>Remaining bricks: {this.state.mines}</h2>
         <button onClick={this.handleNewGame}>New Game</button>
         <Gameboard
           brick={this.state.board}
